@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-nocheck
 import { defineConfig } from 'astro/config';
 import relativeLinks from 'astro-relative-links';
 import { fileURLToPath } from 'url';
@@ -15,7 +15,23 @@ export default defineConfig({
     resolve: {
       alias: {
         '@altv': path.resolve(__dirname, 'src/altv'),
+        'alt-client': path.resolve(__dirname, 'src/altv/client-stub.js'),
+        'natives': path.resolve(__dirname, 'src/altv/client-stub.js'),
+        '@Client/webview/index.js': path.resolve(
+          __dirname,
+          'src/altv/client-stub.js'
+        ),
+        '@Client/webview/index.ts': path.resolve(
+          __dirname,
+          'src/altv/client-stub.js'
+        ),
       },
+    },
+    optimizeDeps: {
+      include: ['alt-client', 'natives'],
+    },
+    ssr: {
+      noExternal: ['alt-client', 'natives'],
     },
   },
 });
