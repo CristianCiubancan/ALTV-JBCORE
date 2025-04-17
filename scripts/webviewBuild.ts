@@ -179,6 +179,7 @@ function generatePagesIndexFile(webviews: WebviewInfo[]): void {
 
   // Generate the file content
   const fileContent = `---
+import '../styles/global.css';
 // will be automatically populated
 ${imports}
 ---

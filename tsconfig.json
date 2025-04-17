@@ -6,7 +6,8 @@
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
       "@styles/*": ["styles/*"],
-      "@Shared/*": ["altv/main/shared/*"]
+      "@Shared/*": ["altv/main/shared/*"],
+      "@Client/*": ["altv/main/client/*"]
     },
     "typeRoots": ["./node_modules/@types", "./node_modules/@altv"],
     "removeComments": true,
