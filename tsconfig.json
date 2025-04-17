@@ -5,7 +5,8 @@
       "@/*": ["*"],
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@Shared/*": ["altv/main/shared/*"]
     },
     "typeRoots": ["./node_modules/@types", "./node_modules/@altv"],
     "removeComments": true,
