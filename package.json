@@ -30,6 +30,7 @@
     "tailwindcss": "^3.3.5"
   },
   "dependencies": {
-    "astro": "^5.7.3"
+    "astro": "^5.7.3",
+    "astro-relative-links": "^0.4.2"
   }
 }
