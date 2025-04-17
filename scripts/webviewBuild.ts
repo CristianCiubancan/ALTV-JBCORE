@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { PLUGIN_IMPORTS } from '../src/config/plugins'; // Ensure the import path is correct
 import path from 'path';
 import { execSync } from 'child_process';
 
@@ -137,7 +138,9 @@ function generatePluginsFile(webviews: WebviewInfo[]): void {
     const key = `${capitalizeFirstLetter(
       webview.pluginName
     )}${capitalizeFirstLetter(webview.webviewName)}`;
-    imports[key] = webview.importPath;
+    // Use alias for altv plugins
+    const aliasPath = webview.importPath.replace(/^\.\.\/altv/, '@altv');
+    imports[key] = aliasPath;
   }
 
   // Generate the file content
@@ -163,7 +166,9 @@ function generatePagesIndexFile(webviews: WebviewInfo[]): void {
       const componentName = `${capitalizeFirstLetter(
         webview.pluginName
       )}${capitalizeFirstLetter(webview.webviewName)}`;
-      return `import ${componentName} from '${webview.importPath}'`;
+      // Use alias for altv plugins
+      const aliasPath = webview.importPath.replace(/^\.\.\/altv/, '@altv');
+      return `import ${componentName} from '${aliasPath}'`;
     })
     .join('\n');
 
@@ -173,13 +178,14 @@ function generatePagesIndexFile(webviews: WebviewInfo[]): void {
       const componentName = `${capitalizeFirstLetter(
         webview.pluginName
       )}${capitalizeFirstLetter(webview.webviewName)}`;
-      return ` <${componentName} />`;
+      return `<ResourceLayout>\n  <${componentName} />\n</ResourceLayout>`;
     })
     .join('\n');
 
   // Generate the file content
   const fileContent = `---
 import '../styles/global.css';
+import ResourceLayout from '../layouts/resource-layout.astro';
 // will be automatically populated
 ${imports}
 ---
@@ -206,7 +212,7 @@ function capitalizeFirstLetter(str: string): string {
 function runAstroBuild(): void {
   console.log('Running Astro build...');
   try {
-    execSync('pnpm webview:build', { stdio: 'inherit' });
+    execSync('astro build', { stdio: 'inherit' });
     console.log('Astro build completed successfully');
   } catch (error) {
     console.error('Error running Astro build:', error);
