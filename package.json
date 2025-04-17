@@ -1,0 +1,35 @@
+{
+  "name": "altv-jbcore",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "binaries": "pnpm altv-pkg",
+    "postinstall": "pnpm binaries",
+    "dev": "altv-server",
+    "webview:dev": "astro dev",
+    "webview:build": "astro build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "devDependencies": {
+    "@altv/types-client": "^16.2.9",
+    "@altv/types-natives": "^16.2.1",
+    "@altv/types-server": "^16.2.6",
+    "@altv/types-shared": "^16.2.4",
+    "@altv/types-webview": "^16.2.1",
+    "@altv/types-worker": "^16.2.0",
+    "@astrojs/tailwind": "^6.0.2",
+    "@astrojs/ts-plugin": "^1.10.4",
+    "@types/node": "^22.14.1",
+    "altv-pkg": "^2.14.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "astro": "^5.7.3"
+  }
+}

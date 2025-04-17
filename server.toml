@@ -1,0 +1,20 @@
+name = 'alt:V Server'
+host = '0.0.0.0'
+port = 7788
+players = 128
+#password = ultra-password
+announce = false
+#token = YOUR_TOKEN
+gamemode = 'Freeroam'
+website = 'example.com'
+language = 'en'
+debug = true
+description = 'alt:V Sample Server'
+modules = [ 'js-module' ]
+resources = [
+    # All resources and mods should always be loaded before core
+    'images',
+    'fonts',
+    'sounds',
+    'rmlui'
+]

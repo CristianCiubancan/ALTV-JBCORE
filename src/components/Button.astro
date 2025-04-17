@@ -1,0 +1,22 @@
+---
+interface Props {
+  text: string;
+  type?: 'primary' | 'secondary' | 'danger';
+  onClick?: string;
+}
+
+const { text, type = 'primary', onClick } = Astro.props;
+
+const buttonClasses = {
+  primary: 'bg-blue-600 hover:bg-blue-700 text-white',
+  secondary: 'bg-gray-500 hover:bg-gray-600 text-white',
+  danger: 'bg-red-600 hover:bg-red-700 text-white'
+};
+---
+
+<button 
+  class={`px-4 py-2 rounded-md transition-colors ${buttonClasses[type]}`}
+  onclick={onClick}
+>
+  {text}
+</button>
